@@ -89,6 +89,7 @@ void Gopher::loadConfigFile()
   CONFIG_MOUSE_RIGHT = strtol(cfg.getValueOfKey<std::string>("CONFIG_MOUSE_RIGHT").c_str(), 0, 0);
   CONFIG_MOUSE_MIDDLE = strtol(cfg.getValueOfKey<std::string>("CONFIG_MOUSE_MIDDLE").c_str(), 0, 0);
   CONFIG_HIDE = strtol(cfg.getValueOfKey<std::string>("CONFIG_HIDE").c_str(), 0, 0);
+  CONFIG_HIDE_ON_START = strtol(cfg.getValueOfKey<std::string>("CONFIG_HIDE_ON_START").c_str(), 0, 0);
   CONFIG_DISABLE = strtol(cfg.getValueOfKey<std::string>("CONFIG_DISABLE").c_str(), 0, 0);
   CONFIG_DISABLE_VIBRATION = strtol(cfg.getValueOfKey<std::string>("CONFIG_DISABLE_VIBRATION").c_str(), 0, 0);
   CONFIG_SPEED_CHANGE = strtol(cfg.getValueOfKey<std::string>("CONFIG_SPEED_CHANGE").c_str(), 0, 0);
@@ -236,6 +237,13 @@ void Gopher::loop()
     {
       toggleWindowVisibility();
     }
+  }
+
+  // Hides console on start
+  if (CONFIG_HIDE_ON_START)
+  {
+	  CONFIG_HIDE_ON_START = 0;
+      toggleWindowVisibility();
   }
 
   // Toggle the on-screen keyboard
