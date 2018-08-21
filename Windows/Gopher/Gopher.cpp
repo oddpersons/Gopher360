@@ -583,31 +583,34 @@ void Gopher::handleTriggers(WORD lKey, WORD rKey)
   bool rTriggerIsDown = _currentState.Gamepad.bRightTrigger > TRIGGER_DEAD_ZONE;
 
   // Handle left trigger
-  if (lTriggerIsDown != _lTriggerPrevious)
+  static int lcount = 0;
+  static int rcount = 0;
+
+  if (lTriggerIsDown)
   {
-    _lTriggerPrevious = lTriggerIsDown;
-    if (lTriggerIsDown)
-    {
-      inputKeyboardDown(lKey);
-    }
-    else
-    {
-      inputKeyboardUp(lKey);
-    }
+	  if ((lcount++ % 10) == 0)
+	  {
+		  inputKeyboardDown(lKey);
+		  inputKeyboardUp(lKey);
+	  }
+  }
+  else
+  {
+	  lcount = 0;
   }
 
   // Handle right trigger
-  if (rTriggerIsDown != _rTriggerPrevious)
+  if (rTriggerIsDown)
   {
-    _rTriggerPrevious = rTriggerIsDown;
-    if (rTriggerIsDown)
-    {
-      inputKeyboardDown(rKey);
-    }
-    else
-    {
-      inputKeyboardUp(rKey);
-    }
+	  if ((rcount++ % 10) == 0)
+	  {
+		  inputKeyboardDown(rKey);
+		  inputKeyboardUp(rKey);
+	  }
+  }
+  else
+  {
+	  rcount = 0;
   }
 }
 
