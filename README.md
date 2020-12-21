@@ -1,3 +1,9 @@
+Fork Info
+======
+This is a personalized fork to include:
+- Moved to Visual Studio 2019
+- Use Windows 10 touch keyboard instead of Accessability keyboard
+
 Download
 ======
 

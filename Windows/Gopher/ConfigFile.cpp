@@ -113,6 +113,7 @@ void ConfigFile::ExtractKeys()
     outfile << "CONFIG_DISABLE_VIBRATION = 0x0011 # Disables Gopher Vibrations" << std::endl;
     outfile << "CONFIG_SPEED_CHANGE =  0x0300	# Change speed" << std::endl;
     outfile << "#CONFIG_OSK = 0x0020   # Toggle on-screen keyboard" << std::endl;
+    outfile << "#CONFIG_HIDE_ON_START =  0x1	# Hide window on startup" << std::endl;
     outfile << "\n" << std::endl;
     outfile << "#	KEYBOARD SHORTCUTS ON CONTROLLER BUTTONS" << std::endl;
     outfile << "#	SET 0 FOR NO FUNCTION" << std::endl;
@@ -137,7 +138,7 @@ void ConfigFile::ExtractKeys()
     outfile << "\n" << std::endl;
     outfile << "# ADVANCED CONFIGURATION SETTINGS" << std::endl;
     outfile << "#  ALLOWED CURSOR SPEEDS, FIRST WILL BE CHOSEN BY DEFAULT.  VALUES > 1.0 WILL BE IGNORED.  NO SPACES." << std::endl;
-    outfile << "CURSOR_SPEED = ULTRALOW=0.005,LOW=0.015,MED=0.025,HIGH=0.04" << std::endl;
+    outfile << "CURSOR_SPEED = HIGH=0.04,ULTRALOW=0.005,LOW=0.015,MED=0.025" << std::endl;
     outfile << "#  SET ACCELERATION FACTOR FOR NON-LINEAR CURSOR SPEED" << std::endl;
     outfile << "# ACCELERATION_FACTOR = 3" << std::endl;
     outfile << "#  Swaps the function of the thumbsticks. Set to 0 for default behavior or set to 1 to have the mouse movement on the right stick and scrolling on the left stick." << std::endl;

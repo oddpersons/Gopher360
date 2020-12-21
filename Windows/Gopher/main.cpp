@@ -23,7 +23,6 @@
 #include <windows.h> // for Beep()
 #include <iostream>
 
-
 #pragma comment(lib, "XInput9_1_0.lib")
 #pragma comment(lib, "winmm") // for volume
 
@@ -66,10 +65,11 @@ int main()
   // dump important tips
   printf("Tip - Press left and right bumpers simultaneously to toggle speeds! (Default is left and right bumpers, configurable in config.ini)\n");
 
-  if (!isRunningAsAdministrator())
-  {
-    printf("Tip - Not running as an admin! Windows on-screen keyboard and others won't work without admin rights.\n");
-  }
+  //Using the Windows 10 keyboard does not require admin.  I haven't found the 'and others' that won't work
+  //if (!isRunningAsAdministrator())
+  //{
+  //  printf("Tip - Not running as an admin! Windows on-screen keyboard and others won't work without admin rights.\n");
+  //}
 
   gopher.loadConfigFile();
 
