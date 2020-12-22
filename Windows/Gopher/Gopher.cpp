@@ -275,8 +275,31 @@ void Gopher::loop()
 
         ITipInvocation* tip;
         hr = CoCreateInstance(CLSID_UIHostNoLaunch, 0, CLSCTX_INPROC_HANDLER | CLSCTX_LOCAL_SERVER, IID_ITipInvocation, (void**)&tip);
-        tip->Toggle(GetDesktopWindow());
-        tip->Release();
+        if (hr != NULL)
+        {
+            SHELLEXECUTEINFO ShExecInfo;
+            LPWSTR app = L"C:\\Program Files\\Common Files\\microsoft shared\\ink\\TabTip.exe";
+            ShExecInfo.cbSize = sizeof(SHELLEXECUTEINFO);
+            ShExecInfo.fMask = NULL;
+            ShExecInfo.hwnd = NULL;
+            ShExecInfo.lpVerb = NULL;
+            ShExecInfo.lpFile = app;
+            ShExecInfo.lpParameters = NULL;
+            ShExecInfo.lpDirectory = NULL;
+            ShExecInfo.nShow = SW_MAXIMIZE;
+            ShExecInfo.hInstApp = NULL;
+
+            BOOL result = ShellExecuteEx(&ShExecInfo);
+            
+            if (!result)
+                printf("Unable to initialize tabtip.exe.  Please manually start the process.");
+        }
+        else
+        {
+            tip->Toggle(GetDesktopWindow());
+            tip->Release();
+        }
+        
     }
   }
 
